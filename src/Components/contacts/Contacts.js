@@ -5,7 +5,6 @@ import {getContactes} from "../../actions/actionsContacts"
 
 class Contacts extends Component 
 {
-    
     componentDidMount()
     {
         this.props.getContactes()
