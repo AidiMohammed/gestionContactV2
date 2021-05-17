@@ -1,18 +1,15 @@
 import React, { Component } from 'react'
 import Contact from './Contact'
+import {connect} from 'react-redux'
 
 class Contacts extends Component 
 {
-    state = {
-        listContactes: [
-            {id: 1,name: "Mohammed", email: "Mohammed@gmail.com",phone: "0633356139"},
-            {id: 2,name: "Ahmed", email: "ahmed@gmail.com",phone: "0633356140"},
-            {id: 3,name: "Karim", email: "karim@gmail.com",phone: "0633356141"},
-        ]
+    componentDidMount()
+    {
+        this.props.getContactes();
     }
-
     render() {
-        const {listContactes} = this.state;
+        const {listContactes} = this.props;
         return (
             <div>
                 <h1 className="display-4 mb-2">
@@ -25,4 +22,22 @@ class Contacts extends Component
     }
 }
 
-export default Contacts;
+const mpaStateToProps = state =>
+{
+    return{
+        listContactes: state.modelContact.listContactes
+    }
+}
+
+const mapDispatchToProps = dispatch =>
+{
+    return{
+        getContactes: ()=>
+        {
+            dispatch({
+            type: "GET_CONTACTS"
+        })
+    }}
+}
+
+export default connect(mpaStateToProps,mapDispatchToProps)(Contacts);
