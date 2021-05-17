@@ -6,14 +6,14 @@ import PageNotFound from './Components/pages/PageNotFound';
 import About from './Components/pages/About';
 import AddContact from './Components/contacts/AddContact';
 import EditContact from './Components/contacts/EditContact'
-import {Provider} from "react-redux"
+import {Provider} from "react-redux";
 import store from "./store"
 
 import {Switch,Route,BrowserRouter as Router} from 'react-router-dom'
 
 function App() {
   return (
-    <Provider store = {store}>
+      <Provider store = {store}>
         <Router>
           <Navbar titel = "Dashboard Client"/>
           <Switch>

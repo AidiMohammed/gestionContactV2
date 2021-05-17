@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import Contact from './Contact'
-import {connect} from 'react-redux'
+import Contact from './Contact';
+import {connect} from "react-redux"
+import {getContactes} from "../../actions/actionsContacts"
 
 class Contacts extends Component 
 {
+    
     componentDidMount()
     {
-        this.props.getContactes();
+        this.props.getContactes()
     }
     render() {
         const {listContactes} = this.props;
@@ -22,22 +24,11 @@ class Contacts extends Component
     }
 }
 
-const mpaStateToProps = state =>
+const mapStateToProps = state =>
 {
     return{
-        listContactes: state.modelContact.listContactes
+        listContactes: state.modelContact.listContacts
     }
 }
 
-const mapDispatchToProps = dispatch =>
-{
-    return{
-        getContactes: ()=>
-        {
-            dispatch({
-            type: "GET_CONTACTS"
-        })
-    }}
-}
-
-export default connect(mpaStateToProps,mapDispatchToProps)(Contacts);
+export default connect(mapStateToProps,{getContactes}) (Contacts);
