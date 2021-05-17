@@ -6,8 +6,8 @@ class Contacts extends Component
     state = {
         listContactes: [
             {id: 1,name: "Mohammed", email: "Mohammed@gmail.com",phone: "0633356139"},
-            {id: 1,name: "Ahmed", email: "ahmed@gmail.com",phone: "0633356140"},
-            {id: 1,name: "Karim", email: "karim@gmail.com",phone: "0633356141"},
+            {id: 2,name: "Ahmed", email: "ahmed@gmail.com",phone: "0633356140"},
+            {id: 3,name: "Karim", email: "karim@gmail.com",phone: "0633356141"},
         ]
     }
 
