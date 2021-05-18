@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import Contact from './Contact';
 import {connect} from "react-redux"
-import {getContactes} from "../../actions/actionsContacts"
+import {getContacts} from "../../actions/actionsContacts";
+
 
 class Contacts extends Component 
 {
     componentDidMount()
     {
-        this.props.getContactes()
+        this.props.getContacts()
     }
     render() {
         const {listContactes} = this.props;
@@ -31,4 +32,4 @@ const mapStateToProps = state =>
     }
 }
 
-export default connect(mapStateToProps,{getContactes}) (Contacts);
+export default connect(mapStateToProps,{getContacts}) (Contacts);

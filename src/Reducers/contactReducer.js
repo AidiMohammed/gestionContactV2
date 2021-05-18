@@ -1,12 +1,8 @@
 import Contacts from "../Components/contacts/Contacts";
 
 const initState = {
-    listContacts : [
-        {id: 1, name: "MohammedAidi", email: "Mohammed@gmail.com", phone: "+212633356139"},
-        {id: 2, name: "Ahmmed", email: "ahammed@gmail.com", phone: "+212633356140"},
-        {id: 3, name: "Imane", email: "imane@gmail.com", phone: "+212633356141"}
-    ],
-    togel: true
+    listContacts : [],
+    contact: {}
 }
 
 export default function(state = initState,action)
@@ -14,7 +10,10 @@ export default function(state = initState,action)
     switch(action.type)
     {
         case "GET_CONTACTS":
-            {return state};
+            return {...state,
+                listContacts: action.paylod
+            };                
+
 
         case "DELET_CONTACT":
             return {
@@ -27,7 +26,18 @@ export default function(state = initState,action)
                 listContacts: [...state.listContacts,action.paylod]
             };
             
-                
+        case "GET_CONTACT":
+            return{
+                ...state,
+                contact: action.paylod
+            }
+
+        case "UPDATE_CONTACT":
+            return{
+                ...state,
+                listContacts: state.listContacts.map(contact => contact.id === action.paylod.id ? (action.paylod) : contact)
+            }
+
         default: 
             {return state};
     }

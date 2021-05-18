@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import InputGroup from '../helpers/InputGroup'
 import {connect} from "react-redux";
-import {addContact,getContactes} from '../../actions/actionsContacts'
+import {addContact,getContacts} from '../../actions/actionsContacts';
 
 class AddContact extends Component 
 {
@@ -42,7 +42,6 @@ class AddContact extends Component
             name,
             email,
             phone,
-            id: this.props.listContacts.length +1
         }
         this.props.addContact(newContact);
 
@@ -112,4 +111,4 @@ const mapStateToProps = state =>
     }
 }
 
-export default connect(mapStateToProps,{addContact,getContactes})(AddContact)
+export default connect(mapStateToProps,{addContact,getContacts})(AddContact)
