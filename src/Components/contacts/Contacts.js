@@ -11,6 +11,7 @@ class Contacts extends Component
     }
     render() {
         const {listContactes} = this.props;
+        console.log("list contactes : ",listContactes)
         return (
             <div>
                 <h1 className="display-4 mb-2">
@@ -26,7 +27,7 @@ class Contacts extends Component
 const mapStateToProps = state =>
 {
     return{
-        listContactes: state.modelContact.listContacts
+        listContactes: state.moduleContact.listContacts
     }
 }
 

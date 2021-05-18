@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import InputGroup from '../helpers/InputGroup'
+import {connect} from "react-redux";
+import {addContact,getContactes} from '../../actions/actionsContacts'
 
 class AddContact extends Component 
 {
+
+    componentDidMount()
+    {
+        this.props.getContactes();
+    }
     state = {
         name: "",
         phone: "",
         email: "",
         errors: {}
     }
+
     submitContact = e =>
     {
         const {name,phone,email} = this.state;
@@ -29,6 +37,14 @@ class AddContact extends Component
             this.setState({errors: {email: "The Email Is Required !"}});
             return;
         }
+
+        const newContact = {
+            name,
+            email,
+            phone,
+            id: this.props.listContacts.length +1
+        }
+        this.props.addContact(newContact);
 
         this.setState({
             name: "",
@@ -89,4 +105,11 @@ class AddContact extends Component
     }
 }
 
-export default AddContact
+const mapStateToProps = state =>
+{
+    return{
+        listContacts: state.moduleContact.listContacts
+    }
+}
+
+export default connect(mapStateToProps,{addContact,getContactes})(AddContact)

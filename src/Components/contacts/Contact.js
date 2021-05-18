@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux';
+import {deletContact} from '../../actions/actionsContacts'
 
 class Contact extends Component {
     state = {
@@ -10,6 +12,13 @@ class Contact extends Component {
     {
         this.setState({showInfoContact: !this.state.showInfoContact})
     }
+
+    deletContact = (id)=>
+    {
+        console.log("delet contact id : ",id);
+        this.props.deletContact(id);
+    }
+
     render() {
         const {name,phone,email,id} = this.props.data;
         return (
@@ -23,8 +32,8 @@ class Contact extends Component {
                     }
                     
                     <div style={{float: "right"}} className="butons">
-                        <Link to={`/contact/edit/${id}`}> <button type="button" className="btn btn-primary">Modifier</button></Link> 
-                        <button style={{marginLeft: "5px"}} type="button" className="btn btn-danger">Supprimer</button> 
+                        <Link to={`/contact/edit/${id}`}> <button type="button" className="btn btn-primary">Modifier</button></Link>
+                        <button onClick ={this.deletContact.bind(this,id)} style={{marginLeft: "5px"}} type="button" className="btn btn-danger">Supprimer</button> 
                     </div>                   
                     </h4>
 
@@ -43,7 +52,7 @@ class Contact extends Component {
 }
 
 Contact.defaultProps= {
-    name: "my name",
+    name: "Name",
     email: "example@mail.com",
     phone: "0123456789"
 }
@@ -51,4 +60,4 @@ Contact.defaultProps= {
 Contact.propTypes = {
     data: PropTypes.object.isRequired 
 }
-export default Contact;
+export default connect(null,{deletContact})(Contact);

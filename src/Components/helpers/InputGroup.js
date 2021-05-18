@@ -8,7 +8,7 @@ function InputGroup(props)
     console.log(errors)
     return (
         <div className="form-group">
-            <label htmlFor={name}>{label} : *</label>
+            <label htmlFor={name}>{label} :*</label>
             <input
                 name= {name}
                 value= {value}

@@ -17,7 +17,6 @@ class EditContact extends Component
         if(name === "")
         {
             this.setState({errors: {name: "The Name Is Required !"}})
-            console.log()
             return;
         }
         if(phone === "")
@@ -41,7 +40,6 @@ class EditContact extends Component
     onChangeInput = e =>
     {
         this.setState({[e.target.name]: e.target.value})
-        console.log(this.state.name)
     }
     render() 
     {
@@ -82,11 +80,9 @@ class EditContact extends Component
                         </div> 
                     </div>      
                 </div>
-
-
             </div>
         )
     }
 }
 
-export default EditContact
+export default EditContact;
